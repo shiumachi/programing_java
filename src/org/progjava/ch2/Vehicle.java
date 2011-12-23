@@ -1,6 +1,8 @@
 package org.progjava.ch2;
 
 public class Vehicle {
+	private static final int TURN_LEFT = 0;
+	private static final int TURN_RIGHT = 1;
 	private double currentVelocity;
 	private double currentDirection;
 	private String ownerName;
@@ -30,9 +32,9 @@ public class Vehicle {
 	}
 
 	public void setCurrentDirection(double currentDirection) {
-		if(currentDirection >= 360.0){
+		if (currentDirection >= 360.0) {
 			currentDirection -= 360.0;
-		} else if(currentDirection < 0.0){
+		} else if (currentDirection < 0.0) {
 			currentDirection += 360.0;
 		}
 		this.currentDirection = currentDirection;
@@ -56,16 +58,33 @@ public class Vehicle {
 				+ this.getOwnerName() + " " + Integer.toString(this.getId());
 		return str;
 	}
-	
-	public void stop(){
+
+	public void stop() {
 		setCurrentVelocity(0.0);
 		return;
 	}
-	
-	public void turn(double angle){
+
+	public void turn(double angle) {
 		setCurrentDirection(getCurrentDirection() + angle);
-		int a;
 		return;
+	}
+
+	public void turn(int direction) {
+		if (direction == Vehicle.TURN_LEFT) {
+			turn(90.0);
+		}
+
+		switch (direction) {
+		case Vehicle.TURN_LEFT:
+			turn(90.0);
+			break;
+		case Vehicle.TURN_RIGHT:
+			turn(-90.0);
+			break;
+		default:
+			throw new IllegalArgumentException();
+		}
+
 	}
 
 	public static void main(String[] args) {
@@ -77,17 +96,21 @@ public class Vehicle {
 		System.out.printf("car2: %s\n", car2);
 		System.out.printf("car3: %s\n", car3);
 		System.out.printf("max id: %d\n", Vehicle.getMaxId());
-		
+
 		System.out.printf("stop\n");
 		car.stop();
 		System.out.printf("car: %s\n", car);
-		
+
 		System.out.printf("turn 20 degrees\n");
 		car.turn(20.0);
 		System.out.printf("car: %s\n", car);
-		
+
 		System.out.printf("turn 400 degrees\n");
 		car.turn(400.0);
+		System.out.printf("car: %s\n", car);
+
+		System.out.printf("turn right\n");
+		car.turn(Vehicle.TURN_RIGHT);
 		System.out.printf("car: %s\n", car);
 
 	}
