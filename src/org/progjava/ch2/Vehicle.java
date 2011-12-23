@@ -30,6 +30,11 @@ public class Vehicle {
 	}
 
 	public void setCurrentDirection(double currentDirection) {
+		if(currentDirection >= 360.0){
+			currentDirection -= 360.0;
+		} else if(currentDirection < 0.0){
+			currentDirection += 360.0;
+		}
 		this.currentDirection = currentDirection;
 	}
 
@@ -59,6 +64,7 @@ public class Vehicle {
 	
 	public void turn(double angle){
 		setCurrentDirection(getCurrentDirection() + angle);
+		int a;
 		return;
 	}
 
@@ -78,6 +84,10 @@ public class Vehicle {
 		
 		System.out.printf("turn 20 degrees\n");
 		car.turn(20.0);
+		System.out.printf("car: %s\n", car);
+		
+		System.out.printf("turn 400 degrees\n");
+		car.turn(400.0);
 		System.out.printf("car: %s\n", car);
 
 	}
