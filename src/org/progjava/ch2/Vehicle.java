@@ -88,6 +88,11 @@ public class Vehicle {
 	}
 
 	public static void main(String[] args) {
+		if(args.length == 1){
+			Vehicle your_car = new Vehicle(100.0, 100.0, args[0], 100);
+			System.out.printf("%s\n", your_car);
+		}
+		
 		Vehicle car = new Vehicle(10.0, 20.0, "tom", 1);
 		Vehicle car2 = new Vehicle(11.0, 3.0, "jon", 2);
 		Vehicle car3 = new Vehicle(15.0, 4.0, "jon", 10);
