@@ -1,8 +1,8 @@
 package org.progjava.ch2;
 
 public class Vehicle {
-	private static final int TURN_LEFT = 0;
-	private static final int TURN_RIGHT = 1;
+	public static final int TURN_LEFT = 0;
+	public static final int TURN_RIGHT = 1;
 	private double currentVelocity;
 	private double currentDirection;
 	private String ownerName;
