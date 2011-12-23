@@ -56,6 +56,11 @@ public class Vehicle {
 		setCurrentVelocity(0.0);
 		return;
 	}
+	
+	public void turn(double angle){
+		setCurrentDirection(getCurrentDirection() + angle);
+		return;
+	}
 
 	public static void main(String[] args) {
 		Vehicle car = new Vehicle(10.0, 20.0, "tom", 1);
@@ -71,7 +76,9 @@ public class Vehicle {
 		car.stop();
 		System.out.printf("car: %s\n", car);
 		
-		
+		System.out.printf("turn 20 degrees\n");
+		car.turn(20.0);
+		System.out.printf("car: %s\n", car);
 
 	}
 
